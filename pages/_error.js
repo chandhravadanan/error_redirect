@@ -1,23 +1,20 @@
+import React from 'react';
+import Router from 'next/router';
 
-
-const ErrorHandler = (props)=>{
-    return (
-        <div>
-            Ooops! something went wrong
-        </div>
-    )
+function ErrorHandler(props) {
+  return <div>my custom error page</div>;
 }
 
-ErrorHandler.getInitialProps = ({req, res, err})=>{
-    if (res && res.statusCode === 404) {
-        res.writeHead(302, {
-            Location: 'https://google.com'
-        });
-        res.end();
-    } else if (err && err.statusCode === 404) {
-        Router.push('https://google.com');
-    }
-    return {};
-}
+ErrorHandler.getInitialProps = ({ req, res, err }) => {
+  if (res && res.statusCode === 404) {
+    res.writeHead(302, {
+      Location: '/about'
+    });
+    res.end();
+  } else if (err && err.statusCode === 404) {
+    Router.push('/about');
+  }
+  return {};
+};
 
 export default ErrorHandler;
