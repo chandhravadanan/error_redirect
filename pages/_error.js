@@ -6,16 +6,16 @@ function ErrorHandler(props) {
 }
 
 ErrorHandler.getInitialProps = ({ req, res, err }) => {
-  if (res && res.statusCode === 404) {
-      res.status = 200
-      res.end('works');
-        /*res.writeHead(302, {
-        Location: '/about'
-        });
-        res.end();*/
-  } else if (err && err.statusCode === 404) {
-      Router.push('/about');
-  }
+  try{
+      if (res && res.statusCode === 404) {
+        res.writeHead(302, {Location: 'https://google.com'});
+        res.end();
+        } else if (err && err.statusCode === 404) {
+            Router.push('https://google.com');
+        }
+    }catch(e){
+        console.log('error occurred', res)
+    }
   return {};
 };
 
