@@ -1,12 +1,16 @@
 
-const InternalError = (props)=>{
-    // some exception occured
-    throw new Error('MyError')
-    return (
-        <div>
-            This is landing page
-        </div>
-    )
-}
 
-export default InternalError;
+import React, { Component } from 'react';
+
+export default class InternalError extends Component (props){
+    // some exception occured
+    render(){
+        throw new Error('MyError')
+        return (
+            <div>
+                This is landing page
+            </div>
+        )
+    }
+    
+}
