@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 
-export default class InternalError extends Component (props){
+export default class InternalError extends Component{
     // some exception occured
     render(){
         throw new Error('MyError')
