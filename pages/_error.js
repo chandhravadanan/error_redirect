@@ -7,10 +7,10 @@ function ErrorHandler(props) {
 
 ErrorHandler.getInitialProps = ({ req, res, err }) => {
   try{
-      if (res && res.statusCode === 404) {
+      if (res && ( res.statusCode === 404 || res.statusCode ===500)) {
         res.writeHead(302, {Location: 'https://google.com'});
         res.end();
-        } else if (err && err.statusCode === 404) {
+        } else if (err && (err.statusCode === 404 || err.statusCode === 500)) {
             Router.push('https://google.com');
         }
     }catch(e){
